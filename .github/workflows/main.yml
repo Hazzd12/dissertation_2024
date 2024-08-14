@@ -1,0 +1,81 @@
+name: Flutter Build and Upload Android APK
+
+on:
+  push:                 # This is the condition that the action will run on
+    branches: [ main ]  # In this case when you push your code into GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This is the type of machine we want to run the action on
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3     # Checkout the Repository on the Virtual Machine
+        with:
+          path: /app                  # Checkout to the /app directory
+
+      - name: Set up JDK              # Setup JAVA to build the Android APK for us
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: microsoft
+
+      - name: Install yq
+        uses: mikefarah/yq@v4.42.1
+
+      - name: Get pubspec version
+        id: get_flutter_app_version
+        run: |
+          VERSION=$(yq e '.version' /app/pubspec.yaml | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
+          echo "TAG_VERSION=$VERSION" >> $GITHUB_OUTPUT
+  
+      - name: Create git tag
+        run: |
+          git tag "v${{ steps.get_flutter_app_version.outputs.TAG_VERSION }}"
+
+      - name: Install Flutter               # Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'main'
+
+      - name: Get Flutter dependencies      # Get the Libraries and Dependencies
+        run: flutter pub get
+        working-directory: /app            # Set the working directory
+
+      - name: Build APK Release             # Build a release
+        run: flutter build apk --release
+        working-directory: /app            # Set the working directory
+
+      - name: Build an AppBundle            # App Bundles are useful for Google Play Store
+        run: flutter build appbundle --release
+        working-directory: /app            # Set the working directory
+
+      - name: Save APK to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: flutter-apk
+          path: /app/build/app/outputs/flutter-apk/*.apk  # Update the path
+
+      - name: Save APPBUNDLE to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: flutter-appbundle
+          path: /app/build/app/outputs/bundle/release/*.aab  # Update the path
+
+      - name: Create git tag
+        run: |
+          if ! git rev-parse "v${{ steps.get_flutter_app_version.outputs.TAG_VERSION }}" >/dev/null 2>&1; then
+            git tag "v${{ steps.get_flutter_app_version.outputs.TAG_VERSION }}"
+            git push origin "v${{ steps.get_flutter_app_version.outputs.TAG_VERSION }}"
+          else
+            echo "Tag v${{ steps.get_flutter_app_version.outputs.TAG_VERSION }} already exists!"
+          fi
+          
+      - name: Create Github Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/app/build/app/outputs/bundle/release/*.aab,/app/build/app/outputs/flutter-apk/*.apk"  # Update the path
+          tag: "v1.0.2"
+          overwrite: true
