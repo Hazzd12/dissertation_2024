@@ -1,6 +1,6 @@
 // WiFi credentials
-#define SSID "CE-Hub-Student"
-#define PASSWORD "casa-ce-gagarin-public-service"
+#define SSID "UCL_IoT"
+#define PASSWORD "uqbQt6hA9k"
 
 #define MQTT_SERVER "mqtt.cetools.org"
 #define MQTT_PORT 1884

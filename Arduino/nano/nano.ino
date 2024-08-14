@@ -21,8 +21,6 @@
 void setup() {
   Serial.begin(9600);
   Serial1.begin(115200);
-  while (!Serial);
-
   if (!APDS.begin()) {
     Serial.println("Error initializing APDS-9960 sensor!");
   }
@@ -38,32 +36,30 @@ void setup() {
   Serial1.println("Hello from Nano 33 BLE!");
 }
 void loop() {
-
-  //
  if (APDS.gestureAvailable() ) {
     // a gesture was detected, read and print to Serial Monitor
     int gesture = APDS.readGesture();
-    //APDS.setLEDBoost(3); 
-    APDS.setGestureSensitivity(55);
+    APDS.setLEDBoost(3); 
+    APDS.setGestureSensitivity(50);
     switch (gesture) {
       case GESTURE_UP:
         Serial.println("Detected UP gesture");
-        Serial1.print("Detected UP gesture123");
+        Serial1.println("up");
         break;
 
       case GESTURE_DOWN:
         Serial.println("Detected DOWN gesture");
-        Serial1.print("Detected DOWN gesture13");
+        Serial1.println("down");
         break;
 
       case GESTURE_LEFT:
         Serial.println("Detected LEFT gesture");
-        Serial1.print("Detected LEFT gesture123");
+        Serial1.println("left");
         break;
 
       case GESTURE_RIGHT:
         Serial.println("Detected RIGHT gesture");
-        Serial1.print("Detected RIGHT gesture1322");
+        Serial1.println("right");
         break;
 
       default:

@@ -4,8 +4,8 @@
 
 #include "myWifi.h"
 
-const char* ssid = SSID;
-const char* password = PASSWORD;
+const char* ssid = WIFISSID;
+const char* password = WIFIPASSWORD;
 
 // MQTT broker address and port
 const char* mqtt_server = MQTT_SERVER;
@@ -13,17 +13,17 @@ const int mqtt_port = MQTT_PORT;
 const char* mqtt_user = MQTT_USER;
 const char* mqtt_pass = MQTT_PASS;
 
-const char* MQTT_PUB_TOPIC[] = { "student/ucfnuax/test",
-                                 "student/ucfnuax/test2" };
-const char* MQTT_SUB_TOPIC[] = { "student/ucfnuax/test",
-                                 "student/ucfnuax/test2" };
+const char* MQTT_SUB_TOPIC[] = { "student/ucfnuax/moving",
+                                 "student/ucfnuax/Gesture",
+                                 "student/ucfnuax/GesStatus",
+                                 "student/ucfnuax/Message"};
 
 int status = WL_IDLE_STATUS;
 
-WiFiClient WiFiclient;
-PubSubClient client(WiFiclient);
+WiFiClient WiFiClientInstance;
+PubSubClient client(WiFiClientInstance);
 long lastReconnectAttempt = 0;
-long now = 0;
+
 long lastMsg = 0;
 
 char msg[50];
@@ -36,13 +36,31 @@ void handlePeopleMoving(byte* payload, int length);
 void WiFiAndMQTTConnection(void (*callback)(char*, unsigned char*, unsigned int)) {
   WiFi.setPins(8, 7, 4, 2);
 
+  WiFi.disconnect();
   // 连接到 WiFi
   Serial.print("Connecting to WiFi");
   WiFi.begin(ssid, password);
+  
+
+    // 将复位引脚拉低
+  int retries = 0;
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
+    if(retries++ > 10){
+      WiFi.disconnect();
+      delay(500);
+      WiFi.begin(ssid, password);
+      Serial.println("Reconnecting");
+      delay(500);
+    }
+
   }
+  // if(retries>=20){
+  //   Serial.println();
+  //   Serial.println("reset");
+  //   digitalWrite(9, HIGH);
+  // }
   // you're connected now, so print out a success message:
   Serial.println("You're connected to the network");
 
@@ -50,6 +68,22 @@ void WiFiAndMQTTConnection(void (*callback)(char*, unsigned char*, unsigned int)
   IPAddress ip = WiFi.localIP();
   Serial.print("Device IP Address: ");
   Serial.println(ip);
+
+byte mac[6];
+  WiFi.macAddress(mac);
+
+  // 输出MAC地址
+  Serial.print("MAC Address: ");
+  for (int i = 0; i < 6; i++) {
+    if (mac[i] < 16) {
+      Serial.print("0");
+    }
+    Serial.print(mac[i], HEX);
+    if (i < 5) {
+      Serial.print(":");
+    }
+  }
+  Serial.println();
 
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
@@ -67,6 +101,16 @@ void WiFiAndMQTTConnection(void (*callback)(char*, unsigned char*, unsigned int)
 
 
 void MQTTloop() {
+
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+      WiFi.disconnect();
+      delay(500);
+      WiFi.begin(ssid, password);
+      Serial.println("Reconnecting");
+    }
+
+
   if (!client.connected()) {
     reconnect();
   }
@@ -74,17 +118,11 @@ void MQTTloop() {
   //publishMessage();
 }
 
-void publishMessage() {
+
+void publishMessage(const char* topic, String message) {
   // 每隔一定时间发布一次消息
-  now = millis();
-  if (now - lastMsg > 2000) {
-    lastMsg = now;
-    ++value;
-    snprintf(msg, 50, "hello world #%d", value);
-    Serial.print("Publishing message: ");
-    Serial.println(msg);
-    client.publish(MQTT_PUB_TOPIC[0], msg);
-  }
+  const char* c_mes = message.c_str();
+  client.publish(topic, c_mes);
 }
 
 
@@ -99,8 +137,9 @@ void doSubscriptions() {
 }
 
 void reconnect() {
-  String clientId = "ESP32Client-";
+  String clientId = "MyESP32Client-";
   clientId += String(random(0xffff), HEX);
+  client.setKeepAlive(3600); 
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     Serial.print("Using server: ");

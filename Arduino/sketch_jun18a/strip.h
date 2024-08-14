@@ -15,7 +15,12 @@ extern int matrixArray[32][19];
 
 void setupStrip();
 void drawLine(int line, uint32_t color1, int height = MATRIX_HEIGHT);
-void drawCharacter(char str, uint32_t color, int offsetX, int offsetY);
+void drawCharacter(char str, uint32_t color, int offsetX, int offsetY, int index);
 void drawString(char str[],  uint32_t color, int offsetX, int offsetY);
+void handleMoving(int movingArray[], int oldMovingHeight[]);
 void drawMoving(int movingArray[], int oldMovingHeight[]);
+void drawWeather(int weatherId, unsigned long nowT);
+void drawRSun(int status, int offsetY);
+void drawHorizontalLine(int y);
+
 #endif
