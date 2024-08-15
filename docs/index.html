@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Lumiverse Strip</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+</head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+<link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="css/vendor.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&family=Roboto+Slab&display=swap"
+  rel="stylesheet">
+
+</head>
+
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+          d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-4">
+          <span>Your <span class="text-primary"> cart</span></span>
+          <span class="badge bg-primary rounded-circle pt-2 text-dark">3</span>
+        </h4>
+
+        <ul class="list-group mb-4">
+          <li class="list-group-item d-flex justify-content-between align-items-center py-3 lh-sm">
+            <div>
+              <h6 class="my-0">Marketing Course</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$120</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center py-3 lh-sm">
+            <div>
+              <h6 class="my-0">Strategy Course</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$80</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center py-3 lh-sm">
+            <div>
+              <h6 class="my-0">Digital Course</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$50</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+            <span class="fw-bold">Total (USD)</span>
+            <strong>$250</strong>
+          </li>
+        </ul>
+
+        <div class="d-grid my-5">
+          <button class="btn btn-primary px-5 py-3" type="submit">Continue to checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main-menu d-flex navbar fixed-top navbar-expand-lg p-2 py-3 p-lg-4 py-lg-4 ">
+    <div class="container-fluid">
+      <div class="main-logo">
+        <div style="display: flex;">
+          <a href="index.html">
+  
+            <h1>Lumiverse Strip</h1>
+            <a class="btn btn-outline-dark mx-3 p-3" href="https://github.com/Hazzd12/dissertation_2024" 
+                    >GitHub</a>
+          </a>
+        </div>
+
+                
+      </div>
+
+
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body justify-content-end">
+
+
+
+          <div class="d-none d-lg-flex align-items-center ms-5">
+            <ul class="d-flex justify-content-end  list-unstyled m-0">
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="tabs-listing mt-4">
+                        <nav>
+                          <div class="nav nav-tabs d-flex justify-content-center border-0" id="nav-tab" role="tablist">
+                            <button class="btn btn-outline-primary px-5 py-3 me-3 active" id="nav-sign-in-tab"
+                              data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab"
+                              aria-controls="nav-sign-in" aria-selected="true">Log In</button>
+                            <button class="btn btn-outline-primary px-5 py-3" id="nav-register-tab" data-bs-toggle="tab"
+                              data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
+                              aria-selected="false">Sign Up</button>
+                          </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
+                            aria-labelledby="nav-sign-in-tab">
+                            <form id="form1" class="form-group flex-wrap p-3 ">
+                              <div class="form-input col-lg-12 my-4">
+                                <label for="exampleInputEmail1"
+                                  class="form-label fs-6 text-uppercase fw-bold text-black">Email
+                                  Address</label>
+                                <input type="text" id="exampleInputEmail1" name="email" placeholder="Email"
+                                  class="form-control ps-3">
+                              </div>
+                              <div class="form-input col-lg-12 my-4">
+                                <label for="inputPassword1"
+                                  class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
+                                <input type="password" id="inputPassword1" placeholder="Password"
+                                  class="form-control ps-3" aria-describedby="passwordHelpBlock">
+                                <div id="passwordHelpBlock" class="form-text text-center">
+                                  <a href="#" class=" password">Forgot Password ?</a>
+                                </div>
+
+                              </div>
+                              <label class="py-3">
+                                <input type="checkbox" required="" class="d-inline">
+                                <span class="label-body text-black">Remember Me</span>
+                              </label>
+                              <div class="d-grid my-3">
+                                <button class="btn btn-primary px-5 py-3">Log In</button>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="tab-pane fade" id="nav-register" role="tabpanel"
+                            aria-labelledby="nav-register-tab">
+                            <form id="form2" class="form-group flex-wrap p-3 ">
+                              <div class="form-input col-lg-12 my-4">
+                                <label for="exampleInputEmail2"
+                                  class="form-label fs-6 text-uppercase fw-bold text-black">Email
+                                  Address</label>
+                                <input type="text" id="exampleInputEmail2" name="email" placeholder="Email"
+                                  class="form-control ps-3">
+                              </div>
+                              <div class="form-input col-lg-12 my-4">
+                                <label for="inputPassword2"
+                                  class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
+                                <input type="password" id="inputPassword2" placeholder="Password"
+                                  class="form-control ps-3" aria-describedby="passwordHelpBlock">
+                              </div>
+                              <label class="py-3">
+                                <input type="checkbox" required="" class="d-inline">
+                                <span class="label-body text-black">I agree to the <a href="#"
+                                    class="text-black password border-bottom">Privacy Policy</a>
+                                </span>
+                              </label>
+                              <div class="d-grid my-3">
+                                <button class="btn btn-primary px-5 py-3">Sign Up</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </nav>
+
+  <div class="row" style="background-color: rgb(181, 182, 177); display: block;">
+    <div class="col-md-8 offset-md-2 padding-large ps-lg-0 pe-lg-5">
+      <img src="./asset/logo.jpg" alt="logo" class="img-fluid" style="float: left; height: 150px;margin-right: 20px; padding-left: 5px;" >
+      <h2 class="display-2 fw-semibold">Lumiverse Strip</h2>
+      <p class="secondary-font my-4 pb-2" style="font-size: 20px; padding-left: 10px;">Do you want a smart light strip that integrates 
+        mutiple functions be designed to enhance users' perception, interaction, and communication, thereby improving your quality of life?</p>
+      <div>
+        <form id="form" class="d-flex justify-content-between position-relative">
+          <p  style="font-size:18px;  padding-left: 10px;">This one can help you realize your wish!</p>
+        </form>
+
+      </div>
+    </div>
+    <!-- <div class="col-md-6 col-lg-7 d-block d-md-none d-lg-block p-0" > -->
+      <!-- <img src="./asset/home_page.png" alt="img" class="img-fluid" style="float: right; height: 100%;" > -->
+      <!-- <img src="./asset/logo.jpg" alt="logo" class="img-fluid" style="float: right; height: 70%;" > -->
+    <!-- </div> -->
+  </div>
+
+  <hr style="margin-top: 100px;">
+  <section id="service" class="padding-medium">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="display-5 fw-semibold">How to <span class="text-primary"> use it</span></h2>
+        <p class="secondary-font">Follow The Steps</p>
+      </div>
+
+      <div class="row g-md-4 mt-2">
+        <div class="col-md-4 mt-4">
+          <div class="services-element p-4 rounded-3 d-flex">
+
+
+            <div class="ps-3">
+              <h4 class="py-2 m-0">Step 1 </h4>
+              <p>If you want to switch functions, you need to shout "Lumi" 
+                into this hole in the picture below.
+                </p><img src="./asset/HOLE.jpg" style="width: 100%;" >
+              </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4">
+          <div class="services-element p-4 rounded-3 d-flex">
+            <div class="ps-3">
+              <h4 class="py-2 m-0">Step 2</h4>
+              <p>When you see a line like this on 
+                the box it means you've successfully awakened it.
+              </p><img src="./asset/WAKE_MODE.jpg" style="width: 100%;" ></div>
+          </div>
+            
+        </div>
+        <div class="col-md-4 mt-4">
+          <div class="services-element p-4 rounded-3 d-flex">
+
+            <div class="ps-3">
+              <h4 class="py-2 m-0">Step 3</h4>
+              <p>Then, you need to say the name of the function you want to change</p>
+              <p>Including: </p>
+              <ul style="padding-left: 20px;">
+                  <li>Moving Mode</li>
+                  <li>Music Mode</li>
+                  <li>Environment Mode</li>
+                  <li>Life Mode</li>
+              </ul>
+          </div>
+          
+        </div>
+        
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<hr>
+  <h2 style="margin-left: 100px; margin-top: 50px; margin-bottom: 50px; font-size: 50px;">Functions</h2>
+  <section id="register" style="background-color: rgb(220, 241, 227); margin:20px;">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 " style="display: flex; justify-content: center;">
+        </div>
+        <div class="col-md-4 ">
+          <div class="mb-5 mt-5 mt-lg-0">
+            <h2 class="display-5 fw-semibold"> 1.<span class="text-primary"> MOVING MODE</span></h2>
+            <p></p>
+            <p class="secondary-font" style="font-size: 25px; line-height: 30px;">
+              In this mode, when someone passes in front of the sensor box in the picture below,
+               the sensor detects this 
+              action and triggers the lights inside the LED box to light up column by column. 
+            </p>
+          </div>
+          <img src="./asset/sensor_box.jpg" alt="img" class="img-fluid" style="padding-bottom: 20px;">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <section id="register" style="margin-top: 50px; margin:20px; ">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 ">
+          <div class="mb-5 mt-5 mt-lg-0">
+            <h2 class="display-5 fw-semibold"> 2.<span class="text-primary"> MUSIC MODE</span></h2>
+            <p></p>
+            <p class="secondary-font" style="font-size: 25px; line-height: 30px;">In this mode, the height 
+              of each line will be modified according to the frequency 
+              and sound level of the current music (sound), acting as 
+              a musical ambient light          </div>
+
+          <p class="secondary-font" >
+            </div>
+        <div class="col-md-4 " style="display: flex; justify-content: center;">
+          <img src="./asset/MUSIC_MODE.jpg" alt="img" class="img-fluid" style="padding-bottom: 020px;">
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <hr>
+  <section id="register" style="background-color: rgb(220, 241, 227); margin:20px;;">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 " style="display: flex; justify-content: center;">
+          <img src="./asset/ENVRIONMENT_MODE.jpg" alt="img" class="img-fluid" style="padding-top: 20px;">
+        </div>
+        <div class="col-md-4 ">
+          <div class="mb-5 mt-5 mt-lg-0">
+            <h2 class="display-5 fw-semibold"> 3.<span class="text-primary"> ENVIRONMENT MODE</span></h2>
+            <p></p>
+            <p class="secondary-font" style="font-size: 25px; line-height: 30px;">  In this mode,
+              it will display some data about the current environment alternately, 
+              including </p>
+              <ul style="padding-left: 20px; font-size: 20px;" >
+                <li>Temperature</li>
+                <li>Humidity</li>
+                <li>Pressure</li>
+                <li>IAQ (Indoor Air Quality)</li>
+                <li>Heat Index</li>
+            </ul>       </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <hr>
+  <section id="register" style="margin-top: 0px;  margin:20px;">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 ">
+          <div class="mb-5 mt-5 mt-lg-0">
+            <h2 class="display-5 fw-semibold"> 4.<span class="text-primary"> LIFE MODE</span></h2>
+            <p></p>
+            <p class="secondary-font" style="font-size: 25px; line-height: 30px;">
+              There are two subfunctions in this mode
+              <p  style="font-size: 25px ;line-height: 30px;">1. Weather: It will show an
+                 animation of today's weather </p>
+            </p>
+            <div class="col-md-4 " style="display: flex; justify-content: center;">
+              <img src="./asset/WEATHER_MODE.jpg" alt="img" class="img-fluid" style="margin-bottom: 20px;">
+            </div>
+            <p  style="font-size: 25px ;line-height: 30px;">2. Sunrise and Sunset: When 
+              there are 30 minutes to go before sunrise and sunset, animations of 
+              the corresponding phases will be shown to simulate the real sunrise and sunset.</p>
+            </p>
+            <div class="col-md-4" style="display: flex; flex-direction: column; align-items: center;">
+              <div style="width: 100%;">
+                  <img src="./asset/SUNRISE_!.jpg" alt="img" class="img-fluid" style="width: 100%;">
+              </div>
+              <div style="width: 100%; margin-top: 10px;">
+                  <img src="./asset/sunrise2.jpg" alt="img" class="img-fluid" style="width: 100%;">
+              </div>
+              <div style="width: 100%; margin-top: 10px;">
+                  <img src="./asset/sunrise3.jpg" alt="img" class="img-fluid" style="width: 100%;">
+              </div>
+          </div>
+          
+          </div>
+
+          <p class="secondary-font" >
+            </div>
+        
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <hr>
+  <section id="register" style="background-color: rgb(220, 241, 227); margin:20px;;">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6 " style="display: flex; justify-content: center;">
+          <img src="./asset/TEXT.jpg" alt="img" class="img-fluid" style="padding-top: 20px;">
+        </div>
+        <div class="col-md-4 ">
+          <div class="mb-5 mt-5 mt-lg-0">
+            <h2 class="display-5 fw-semibold"> 5.<span class="text-primary"> TEXT MODE</span></h2>
+            <p></p>
+            <p class="secondary-font" style="font-size: 25px; line-height: 30px;"> 
+              You can't wake this up by saying "Text Mode" to "Lumi". 
+              You can only send the specified message by crossing your 
+              palm over the circular hole under the sensor box. For example, 
+              when you cross your palm from left to right, it sends 
+              the message Good morning. Or download the 
+              <a href="https://github.com/Hazzd12/dissertation_2024/releases/tag/v1.0.0" style="text-decoration: underline;color:aqua;">software  </a>
+               and 
+              send the message you want to show through the software.
+                </div>
+        </div>
+        <p class="secondary-font" > 
+          PS: This is the highest priority function, and when a message is transmitted, the original function is suspended. Also, when the 
+          yellow led is on, it means that you could not send a new message for now.
+        </p>
+      </div>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container padding-medium ">
+      <div class="row">
+        <div class="col-md-4 my-3">
+          <h5 class="text-uppercase fw-bold mb-4">Contact us</h5>
+          <p><iconify-icon class="social-icon text-primary fs-5 me-2" icon="mdi:location"
+              style="vertical-align:text-bottom"></iconify-icon> <span class="fw-bold">Address: </span> UCL EAST, London, UK</p>
+          <p><iconify-icon class="social-icon text-primary fs-5 me-2" icon="solar:phone-bold"
+              style="vertical-align:text-bottom"></iconify-icon> <span class="fw-bold">Phone: </span> (44) 1234567890</p>
+          <p><iconify-icon class="social-icon text-primary fs-5 me-2" icon="ic:baseline-email"
+              style="vertical-align:text-bottom"></iconify-icon> <span class="fw-bold">Email: </span>
+            ucfnuax@ucl.ac.uk
+          </p>
+        </div>
+       
+        <div class="col-md-2 my-3">
+          <div class="footer-menu">
+            <h5 class="text-uppercase fw-bold mb-4">support</h5>
+            <ul class="menu-list list-unstyled">
+              <li class="menu-item mb-2">
+                <a href="#">FAQs</a>
+              </li>
+              <li class="menu-item mb-2">
+                <a href="#">Support</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <div id="footer-bottom">
+    <hr class="m-0 text-black-50">
+    <div class="container py-3">
+      <div class="row mt-3">
+        <div class="col-md-6 copyright">
+          <p>© 2024 Lumiverse Strip. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+
+</html>
