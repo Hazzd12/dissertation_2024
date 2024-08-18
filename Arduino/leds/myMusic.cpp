@@ -183,7 +183,7 @@ void drawRHYTHM() {
     // 将值记录到oldBarHeights
      oldBarHeights[band] = barHeight;
   }  
-// 70毫秒降低一次顶点
+// 50毫秒降低一次顶点
   if((millis() - peekDecayTime) >= 50){
     for (byte band = 0; band < NUM_BANDS; band++){
       if (peak[band] > 0) peak[band] -= 1;
@@ -191,7 +191,6 @@ void drawRHYTHM() {
     colorTime++;
     peekDecayTime = millis();
   }
-  // 10毫秒变换一次颜色
 
   matrix.setBrightness(50);
   matrix.show();
