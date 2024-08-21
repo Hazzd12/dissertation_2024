@@ -20,13 +20,13 @@ The "Lumiverse Strip" is an advanced smart lighting system that utilizes WS2812B
 
 **Moving Mode**
 
-![](.\docs\asset\Moving_mode.jpg)
+![](docs/asset/Moving_mode.jpg)
 
 
 
 **Music Mode**
 
-![](.\docs\asset\MUSIC_MODE.jpg)
+![](\docs\asset\MUSIC_MODE.jpg)
 
 
 
