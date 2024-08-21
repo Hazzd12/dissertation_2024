@@ -26,27 +26,27 @@ The "Lumiverse Strip" is an advanced smart lighting system that utilizes WS2812B
 
 **Music Mode**
 
-![](/docs/asset/MUSIC_MODE.jpg)
+<img src="/docs/asset/MUSIC_MODE.jpg" style="zoom:80%;" />
 
 
 
 **Environment Mode**
 
-![](.\docs\asset\ENVRIONMENT_MODE.jpg)
+<img src=".\docs\asset\ENVRIONMENT_MODE.jpg" style="zoom:80%;" />
 
 
 
 **Life Mode**
 
-![](.\docs\asset\WEATHER_MODE.jpg)
+<img src=".\docs\asset\WEATHER_MODE.jpg" style="zoom:80%;" />
 
-![](.\docs\asset\Thuderstorm.jpg)
+<img src=".\docs\asset\Thuderstorm.jpg" style="zoom:80%;" />
 
-![](.\docs\asset\SUNRISE_!.jpg)
+<img src=".\docs\asset\SUNRISE_!.jpg" style="zoom:80%;" />
 
-![](.\docs\asset\sunrise2.jpg)
+<img src=".\docs\asset\sunrise2.jpg" style="zoom:80%;" />
 
-![](.\docs\asset\sunrise3.jpg)
+<img src=".\docs\asset\sunrise3.jpg" style="zoom:80%;" />
 
 ****
 
@@ -69,16 +69,16 @@ The "Lumiverse Strip" is an advanced smart lighting system that utilizes WS2812B
 
 * Use a laser cutter to cut 3mm acrylic sheets according to the stored file (path: `./dxf/file_name.dxf`). The names of files represent which part they are belong to.
   * Sensor Box:
-    * ![](\docs\asset\layoutSen.jpg)
+    * <img src="\docs\asset\layoutSen.jpg" style="zoom:150%;" />
   * Led Box:
-    * ![](\docs\asset\layoutLED.jpg)
+    * <img src="\docs\asset\layoutLED.jpg" style="zoom:80%;" />
 
 ### Assemble the Hardware
 
 1. **Sensor Box Assembly:**
 
    * Assemble the circuit according to the circuit diagram
-     * ![](\docs\asset\sen_cir.png)
+     * <img src="\docs\asset\sen_cir.png" style="zoom: 80%;" />
      * Arrange the WS2812B LED strips in a wavy pattern, aligning with the height differences between the columns.
      * Route the wires (VCC, GND, and data) through the holes in the "MIDDLE" panel and secure them between the "MIDDLE" and "BOTTOM" layers.
 
@@ -90,7 +90,7 @@ The "Lumiverse Strip" is an advanced smart lighting system that utilizes WS2812B
 
    * Assemble the circuit according to the circuit diagram
 
-     * ![](\docs\asset\led_cir.png)
+     * <img src="\docs\asset\led_cir.png" style="zoom:80%;" />
 
      * Connect the WS2812B LED strips to the microcontroller (Adafruit Feather M0) and ensure the power supply is sufficient to drive the entire strip.
 
@@ -138,13 +138,13 @@ The "Lumiverse Strip" is an advanced smart lighting system that utilizes WS2812B
 
 Here are some flowcharts of the design of the code:
 
-* ![](.\docs\asset\fc_sb.png)
-* ![](.\docs\asset\fc__sb_loop.png)
-* ![](.\docs\asset\fc_lb.png)
-* ![](.\docs\asset\fc_lb_mom.png)
-* ![](.\docs\asset\fc_lb_mum.png)
-* ![](.\docs\asset\fc_lb_em.png)
-* ![](.\docs\asset\fc_lb_lm.png)
+* <img src=".\docs\asset\fc_sb.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc__sb_loop.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc_lb.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc_lb_mom.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc_lb_mum.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc_lb_em.png" style="zoom:80%;" />
+* <img src=".\docs\asset\fc_lb_lm.png" style="zoom:80%;" />
 
 ****
 
